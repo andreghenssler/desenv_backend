@@ -1,0 +1,16 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+HIDE_STEREOTYPE()
+
+Person(aluno, "Label","Aluno")
+Person(professor, "Label","Professor")
+Person(adm,"Label", "Administrador")
+
+Container(portal, "Portal", "Aluno")
+
+Rel(aluno, portal, "Utiliza", "")
+Rel(adm, portal, "Utiliza", "")
+Rel(professor, portal, "Utiliza", "")
+
+
+@enduml
