@@ -1,21 +1,22 @@
-import express from 'express';
-const app = express();
-const port = 3000;
+const express = require('express');
+const vendasRoutes = require('./routes/vendas');
 
+const app = express();
+const PORT = 3000;
 
 app.use(express.json());
+app.use('/vendas', vendasRoutes);
 app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-app.post('/vendas', (req, res) => {
-    const { produto, vendedor, valor } = req.body;
-    res.json({
-        produto,
-        vendedor,
-        valor
-    });
+    res.send(`
+        <h1>Resumo de Vendas</h1>
+        <ul>
+            <li><a href="/vendas/resumo/geral">Resumo Geral</a></li>
+            <li><a href="/vendas/resumo/data">Resumo por Data</a></li>
+            <li><a href="/vendas/resumo/estado">Resumo por Estado (UF)</a></li>
+        </ul>
+    `);
 });
 
-app.listen(port, () => {
-    console.log(`Example app listening on port http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}/`);
 });
