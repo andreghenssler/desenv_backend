@@ -1,0 +1,11 @@
+git init #inicia
+
+git add .
+
+git commit -m "Texto" # comenta
+
+git branch -M main
+
+git remote add origin git@github.com:andreghenssler/desenv_backend.git
+
+git push -u origin main #enviar para o git
