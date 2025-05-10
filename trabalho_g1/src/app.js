@@ -10,6 +10,6 @@ require('./config/db'); // conexão com o banco
 app.use(express.json());
 
 app.use('/api/usuarios', userRoutes);
-app.use('/api/obras', authMiddleware, obraRoutes); // protegida
+app.use('/api/obras',authMiddleware, obraRoutes);
 
 module.exports = app;
