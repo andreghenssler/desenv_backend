@@ -1,0 +1,25 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(cidadao, "Cidadao","Consultar")
+Person(servidor_publico, "Servidor Publico","Cadastrar e Atualizar Obras")
+System_Boundary(c1, "System") {
+  Container(web_app, "Obras Publicas","")
+  Container(backend, "Backend", "Node Express")
+}
+
+Container(postegreSql, "PostegreSql")
+
+Container(service_exter, "Servico externo")
+
+
+Rel(servidor_publico, web_app, "Uses", "HTTPS")
+
+Rel(cidadao, web_app, "Uses", "HTTPS")
+
+Rel(web_app,backend,"")
+
+Rel(backend, postegreSql, "Gets tweets from", "HTTPS")
+
+Rel(backend,service_exter,"")
+@enduml
